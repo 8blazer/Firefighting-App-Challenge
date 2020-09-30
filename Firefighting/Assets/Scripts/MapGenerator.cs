@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class MapGenerator : MonoBehaviour
     public GameObject housePrefab;
     public GameObject waterPrefab;
     public GameObject firePrefab;
-
+    public GameObject fireHouse;
     int i = 0;
+    float x = -24.5f;
+    float y = 24.5f;
     int trees = 0;
     int fields = 0;
     int houses = 0;
@@ -251,15 +254,67 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        i = rnd.Next(0, 2500);
+        i = rnd.Next(0, 2500); //Add fire
         while (tiles[i] == 40 || tiles[i] == 30)
         {
             i = rnd.Next(0, 2500);
         }
         tiles[i] = 50;
 
-        i = 0;
+        i = rnd.Next(0, 2500); //Add fire house
         int i2 = 0;
+        while (tiles[i] != 30)
+        {
+            i = rnd.Next(0, 2500);
+        }
+        while (i != i2)
+        {
+            if (x == 24.5)
+            {
+                x = -24.5f;
+                y--;
+            }
+            else
+            {
+                x++;
+            }
+            i2++;
+        }
+        if (x > 23)
+        {
+            x = 22.5f;
+            i--;
+        }
+        else if (x < -23)
+        {
+            x = -22.5f;
+            i++;
+        }
+        if (y > 23)
+        {
+            y = 22.5f;
+            i = i - 50;
+        }
+        else if (y < -23)
+        {
+            y = -22.5f;
+            i = i + 50;
+        }
+        tiles[i] = 60;
+        tiles[i + 1] = 60;
+        tiles[i - 1] = 60;
+        tiles[i - 2] = 60;
+        tiles[i - 50] = 60;
+        tiles[i - 51] = 60;
+        tiles[i + 50] = 60;
+        tiles[i + 51] = 60;
+        tiles[i + 49] = 60;
+        tiles[i + 48] = 60;
+        tiles[i + 100] = 60;
+        tiles[i + 99] = 60;
+        Instantiate(fireHouse, new Vector3(x - .5f, y - .5f, 0), Quaternion.identity);
+        i = 0;
+        i2 = 0;
         
         while (tiles.Contains(0))
         {
@@ -293,8 +348,8 @@ public class MapGenerator : MonoBehaviour
             i++;
         }
         i = 0;
-        float x = -24.5f;
-        float y = 24.5f;
+        x = -24.5f;
+        y = 24.5f;
         while (i < 2500) //Generates the tiles
         {
             if (tiles[i] == 10)
@@ -313,7 +368,7 @@ public class MapGenerator : MonoBehaviour
             {
                 Instantiate(waterPrefab, new Vector3(x, y, 0), Quaternion.identity);
             }
-            else
+            else if (tiles[i] == 50)
             {
                 Instantiate(firePrefab, new Vector3(x, y, 0), Quaternion.identity);
             }

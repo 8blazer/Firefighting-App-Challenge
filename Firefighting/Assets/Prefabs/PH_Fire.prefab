@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7790650415970797540}
   - component: {fileID: 8350317461410375499}
   - component: {fileID: 898536612444556352}
-  - component: {fileID: 8800314550758917687}
   - component: {fileID: -8208504049638388863}
+  - component: {fileID: 1857383711420964653}
   m_Layer: 0
   m_Name: PH_Fire
   m_TagString: Untagged
@@ -111,21 +111,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &8800314550758917687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348432674478810017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee0c60ffa0d2bf47b7897247aed68a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePrefab: {fileID: 1348432674478810017}
-  detectorPrefab: {fileID: 81081265439847272, guid: 48ced211f9c5a4848ac897cb54c82b9a,
-    type: 3}
 --- !u!50 &-8208504049638388863
 Rigidbody2D:
   serializedVersion: 4
@@ -147,3 +132,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1857383711420964653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348432674478810017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4555a2cd6abf4044973d09e4a3528cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapGenerator: {fileID: 0}
+  windController: {fileID: 0}
+  firePrefab: {fileID: 1348432674478810017}
+  ashPrefab: {fileID: 1349342616120312592, guid: 36172d684ce721f4eb2a54f9dcb1a4ca,
+    type: 3}

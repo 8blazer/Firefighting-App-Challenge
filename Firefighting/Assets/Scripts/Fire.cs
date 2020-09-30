@@ -7,12 +7,14 @@ public class Fire : MonoBehaviour
     float x = -24.5f;
     float y = 24.5f;
     int i = 0;
+    int position;
     float spreadTimer;
     float dieTimer;
     float detectionTimer;
     bool detectionTimerGoing = false;
     public GameObject firePrefab;
     public GameObject detectorPrefab;
+    public GameObject ashPrefab;
     GameObject mapGenerator;
     GameObject windController;
     GameObject upDetector;
@@ -62,6 +64,7 @@ public class Fire : MonoBehaviour
             }
             i++;
         }
+        position = i;
     }
 
     // Update is called once per frame
@@ -333,20 +336,8 @@ public class Fire : MonoBehaviour
         {
             if (rnd.Next(1, 3) == 1)
             {
-                while (x != transform.position.x || y != transform.position.y) //Find where this fire is
-                {
-                    if (x == 24.5)
-                    {
-                        x = -24.5f;
-                        y--;
-                    }
-                    else
-                    {
-                        x++;
-                    }
-                    i++;
-                }
                 mapGenerator.GetComponent<MapGenerator>().tiles[i] = 60;
+                Instantiate(ashPrefab, new Vector3(x, y, 0), Quaternion.identity);
                 Destroy(gameObject);
             }
             dieTimer = 0;

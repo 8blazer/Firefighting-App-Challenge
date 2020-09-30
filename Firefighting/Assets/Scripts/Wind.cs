@@ -7,6 +7,14 @@ public class Wind : MonoBehaviour
     public int windDirection;
     System.Random rnd = new System.Random();
     float timer = 0;
+    public Sprite up;
+    public Sprite upRight;
+    public Sprite right;
+    public Sprite downRight;
+    public Sprite down;
+    public Sprite downLeft;
+    public Sprite left;
+    public Sprite upLeft;
     int i;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +26,7 @@ public class Wind : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 60)
+        if (timer > 30)
         {
             i = rnd.Next(1, 4);
             if (i == 1)
@@ -44,6 +52,33 @@ public class Wind : MonoBehaviour
                 }
             }
             timer = 0;
+        }
+        switch (windDirection)
+        {
+            case 1:
+                gameObject.GetComponent<SpriteRenderer>().sprite = up;
+                break;
+            case 2:
+                gameObject.GetComponent<SpriteRenderer>().sprite = upRight;
+                break;
+            case 3:
+                gameObject.GetComponent<SpriteRenderer>().sprite = right;
+                break;
+            case 4:
+                gameObject.GetComponent<SpriteRenderer>().sprite = downRight;
+                break;
+            case 5:
+                gameObject.GetComponent<SpriteRenderer>().sprite = down;
+                break;
+            case 6:
+                gameObject.GetComponent<SpriteRenderer>().sprite = downLeft;
+                break;
+            case 7:
+                gameObject.GetComponent<SpriteRenderer>().sprite = left;
+                break;
+            case 8:
+                gameObject.GetComponent<SpriteRenderer>().sprite = upLeft;
+                break;
         }
     }
 }
